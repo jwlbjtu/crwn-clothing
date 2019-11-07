@@ -1,9 +1,13 @@
 import React from 'react';
 import './App.css';
 
+import HomePage from './pages/homepage.component';
+
 const App: React.FC = () => {
   return (
-    <div>Hello world</div>
+    <div>
+      <HomePage />
+    </div>
   );
 }
 
