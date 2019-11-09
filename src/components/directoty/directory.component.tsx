@@ -1,19 +1,10 @@
 import React from 'react';
+
 import './directory.styles.scss';
 
+import { DirectoryState } from 'directory-component-types';
+
 import MenuItem from '../menu-item/menu-item.component';
-
-interface DirectoryState {
-    sections: Array<Section>
-}
-
-interface Section {
-    title: string,
-    imageUrl: string,
-    id: number,
-    size: string,
-    linkUrl: string
-}
 
 class Directory extends React.Component<{}, DirectoryState> {
     state = {
@@ -59,13 +50,9 @@ class Directory extends React.Component<{}, DirectoryState> {
     render() {
         return (
             <div className='directory-menu'>
-                {
-                    this.state.sections.map(section => (
-                        <MenuItem key={section.id} 
-                                  title={section.title.toUpperCase()} 
-                                  imgUrl={section.imageUrl}
-                                  size={section.size}
-                        />
+                {   // using object spread operation instead of passing single props one by one
+                    this.state.sections.map(({id, ...otherSectionProps}) => (
+                        <MenuItem key={id} {...otherSectionProps} />
                     ))
                 }
             </div>
