@@ -3,7 +3,7 @@ declare module 'directory-component-types' {
         sections: Array<Section>
     }
     
-    interface Section {
+    export interface Section {
         title: string,
         imageUrl: string,
         id: number,
