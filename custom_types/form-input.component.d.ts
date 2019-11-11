@@ -1,6 +1,7 @@
 declare module 'form-input-component-types' {
+    import React from 'react';
     
-    import { HandleChangeFunctionType } from 'sign-in-component-types';
+    export type HandleOnChangeFunctionType = <K extends keyof T>(event: React.ChangeEvent<HTMLInputElement>) => void;
 
     export interface FormInputProps {
         handleChange: HandleChangeFunctionType,

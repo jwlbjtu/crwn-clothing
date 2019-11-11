@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import { SignInState, HandleChangeFunctionType } from 'sign-in-component-types';
+import { SignInState } from 'sign-in-component-types';
+import { HandleOnChangeFunctionType } from 'form-input-component-types';
 
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
@@ -22,7 +23,7 @@ class SignIn extends React.Component<{}, SignInState> {
         this.setState({ email: '', password: '' });
     }
 
-    handleChange: HandleChangeFunctionType = <K extends keyof SignInState>(event: React.ChangeEvent<HTMLInputElement>):void => {
+    handleChange: HandleOnChangeFunctionType = <K extends keyof SignInState>(event: React.ChangeEvent<HTMLInputElement>):void => {
         const { name, value } = event.target;
         const newState = {
             [name]: value
