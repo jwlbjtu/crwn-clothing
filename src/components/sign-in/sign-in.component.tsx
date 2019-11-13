@@ -6,7 +6,7 @@ import { HandleOnChangeFunctionType } from 'form-input-component-types';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
-import { signInWithGoogle } from '../../firebase/firebase.util';
+import { auth, signInWithGoogle } from '../../firebase/firebase.util';
 
 import './sign-in.style.scss';
 
@@ -17,10 +17,17 @@ class SignIn extends React.Component<{}, SignInState> {
         password: ''
     }
 
-    handleSubmit = (event: React.FormEvent<HTMLFormElement>):void => {
+    handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        this.setState({ email: '', password: '' });
+        try {
+            const {email, password} = this.state;
+            await auth.signInWithEmailAndPassword(email, password);
+            this.setState({ email: '', password: '' });
+        } catch (error) {
+            console.error(error);
+            alert(error.message);
+        }
     }
 
     handleChange: HandleOnChangeFunctionType = <K extends keyof SignInState>(event: React.ChangeEvent<HTMLInputElement>):void => {

@@ -37,9 +37,7 @@ class SignUp extends React.Component<{}, SignUpState> {
         }
 
         try {
-
             const { user } = await auth.createUserWithEmailAndPassword(email, password);
-
             if(user) {
                 createUserProfileDocument(user, {displayName});
             }
@@ -52,6 +50,7 @@ class SignUp extends React.Component<{}, SignUpState> {
             });
         } catch (error) {
             console.error(error);
+            alert(error.message);
         }
     }
 
