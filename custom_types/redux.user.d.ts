@@ -3,7 +3,12 @@ declare module 'redux-user-types' {
         currentUser: any
     }
 
+    export interface CartState {
+        hidden: boolean
+    }
+
     export interface RootState {
-        user: UserState
+        user: UserState,
+        cart: CartState
     }
 }

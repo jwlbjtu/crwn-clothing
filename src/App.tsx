@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { setCurrentUser } from './redux/user/user.actions';
 
 import './App.css';
 
@@ -13,7 +14,6 @@ import ShopPage from './pages/shop/shop.component';
 import SigninRegisterPage from './pages/signin-register/signin-register.component';
 
 import { auth, createUserProfileDocument } from './firebase/firebase.util';
-import { setCurrentUser } from './redux/user/user.actions';
  
 class App extends React.Component<AppProps, {}> {
   unsubscribeFirebaseAuth: firebase.Unsubscribe | null = null;
