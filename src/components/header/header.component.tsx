@@ -7,7 +7,7 @@ import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 import { HeaderProps } from 'header-component-types';
-import { RootState } from 'redux-user-types'; 
+import { RootState } from 'redux-root-types'; 
 
 import { auth } from '../../firebase/firebase.util';
 

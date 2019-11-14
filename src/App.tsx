@@ -6,7 +6,7 @@ import { setCurrentUser } from './redux/user/user.actions';
 import './App.css';
 
 import { AppProps } from 'app-types';
-import { RootState } from 'redux-user-types';
+import { RootState } from 'redux-root-types';
 
 import Header from './components/header/header.component';
 import HomePage from './pages/homepage/homepage.component';

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { CollectionPreviewProps } from 'collection-preview-component-types';
+import { CollectionPreviewProps } from 'shop-component-types';
 
 import CollectionItem from '../collection-item/collection-item.component';
 
@@ -12,8 +12,8 @@ const CollectionPreview: React.FC<CollectionPreviewProps> = ({title, routeName, 
         <div className='preview'>
         {
             items.filter((item, index) => index < 4)
-                 .map(({id, ...otherItemProps}) =>(
-                     <CollectionItem key={id} {...otherItemProps}/>
+                 .map((item) =>(
+                     <CollectionItem key={item.id} item={item} />
                  ))
         }
         </div>

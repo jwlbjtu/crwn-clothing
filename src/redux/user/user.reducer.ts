@@ -1,7 +1,7 @@
 import { AnyAction } from 'redux';
 import { UserActionTypes } from './user.types';
 
-import { UserState } from 'redux-user-types';
+import { UserState } from 'redux-root-types';
 
 const INITIAL_STATE = {
     currentUser: null
