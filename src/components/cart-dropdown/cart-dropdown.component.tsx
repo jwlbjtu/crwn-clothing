@@ -9,7 +9,7 @@ import './cart-dropdown.styles.scss';
 import CustomButton from '../custom-button/custom-button.component';
 import CartItemComponent from '../cart-item/cart-item.component';
 
-import { CartItem } from 'shop-component-types';
+import { selectCartItems } from '../../redux/cart/cart.selector';
 
 
 const CartDropdown: React.FC<CartDropDownProps> = ({ cartItems }) => (
@@ -26,7 +26,7 @@ const CartDropdown: React.FC<CartDropDownProps> = ({ cartItems }) => (
 );
 
 const mapStateToProps = (state: RootState) => ({
-    cartItems: state.cart.cartItems
+    cartItems: selectCartItems(state)
 });
 
 

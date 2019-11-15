@@ -3,7 +3,7 @@ declare module 'cart-component-types' {
 
     export interface CartIconProps {
         toggleCartHidden: () => void,
-        cartItems: Array<Item>
+        itemCount: number
     }
 
     export interface CartDropDownProps {
