@@ -14,6 +14,7 @@ import ShopPage from './pages/shop/shop.component';
 import SigninRegisterPage from './pages/signin-register/signin-register.component';
 
 import { auth, createUserProfileDocument } from './firebase/firebase.util';
+import { selectCurrentUser } from './redux/user/user.selector';
  
 class App extends React.Component<AppProps, {}> {
   unsubscribeFirebaseAuth: firebase.Unsubscribe | null = null;
@@ -63,7 +64,7 @@ class App extends React.Component<AppProps, {}> {
 }
 
 const mapStateToProps = (state: RootState) => ({
-  currentUser: state.user.currentUser
+  currentUser: selectCurrentUser(state)
 });
 
 const mapDispachToProps = (dispatch: any) => ({
