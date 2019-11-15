@@ -1,5 +1,5 @@
 declare module 'cart-component-types' {
-    import { Item } from 'shop-component-types';
+    import { Item, CartItem } from 'shop-component-types';
 
     export interface CartIconProps {
         toggleCartHidden: () => void,
@@ -7,6 +7,10 @@ declare module 'cart-component-types' {
     }
 
     export interface CartDropDownProps {
-        cartItems: Array<Item>
+        cartItems: Array<CartItem>
+    }
+
+    export interface CartItemProps {
+        item: CartItem
     }
 }
