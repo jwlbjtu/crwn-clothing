@@ -3,7 +3,7 @@ declare module 'form-input-component-types' {
     
     export type HandleOnChangeFunctionType = <K extends keyof T>(event: React.ChangeEvent<HTMLInputElement>) => void;
 
-    export interface FormInputProps {
+    export type FormInputProps = {
         handleChange: HandleChangeFunctionType,
         label?: string,
         name: string,

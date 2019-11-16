@@ -6,10 +6,10 @@ import SignUp from '../../components/sign-up/sign-up.component';
 import './signin-register.style.scss';
 
 const SigninRegisterPage: React.FC = () => (
-    <div className='sign-in-and-register'>
-        <SignIn />
-        <SignUp />
-    </div>
-)
+  <div className="sign-in-and-register">
+    <SignIn />
+    <SignUp />
+  </div>
+);
 
 export default SigninRegisterPage;

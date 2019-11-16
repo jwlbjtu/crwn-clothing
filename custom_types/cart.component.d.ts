@@ -2,28 +2,28 @@ declare module 'cart-component-types' {
     import { RouteComponentProps } from 'react-router';
     import { Item, CartItem } from 'shop-component-types';
 
-    export interface CartIconProps {
+    export type CartIconProps = {
         toggleCartHidden: () => void,
         itemCount: number
     }
 
-    export interface CartDropdownProps {
+    export type CartDropdownProps = {
         cartItems: Array<CartItem>,
         dispatch: any
     }
 
     export type RouterCartDropdownProps = RouteComponentProps<{}> & CartDropdownProps;
 
-    export interface CartItemProps {
+    export type CartItemProps = {
         item: CartItem
     }
 
-    export interface CheckoutPageProps {
-        cartItems: Array<CartItem>,
+    export type CheckoutPageProps = {
+        cartItems: CartItem[],
         total: number
     }
 
-    export interface CheckoutItemProps {
+    export type CheckoutItemProps = {
         cartItem: CartItem,
         addItem: (item: Item) => void,
         removeItem: (cartItem: CartItem) => void,

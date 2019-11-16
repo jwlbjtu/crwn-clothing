@@ -1,5 +1,5 @@
 declare module 'app-types' {
-    export interface AppProps {
+    export type AppProps = {
         setCurrentUser: (user: any) => void,
         currentUser: any
     };

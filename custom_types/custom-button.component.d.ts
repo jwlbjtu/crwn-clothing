@@ -1,5 +1,5 @@
 declare module 'custom-button-component-types' {
-    export interface CustomButtonProps {
+    export type CustomButtonProps = {
         [key: string]: any
     }
 }

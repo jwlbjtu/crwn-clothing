@@ -1,9 +1,9 @@
-import { RootState, UserState } from "redux-root-types";
-import { createSelector } from "reselect";
+import { RootState, UserState } from 'redux-root-types';
+import { createSelector } from 'reselect';
 
-export const selectUser = (state: RootState) => state.user;
+export const selectUser = (state: RootState): UserState => state.user;
 
 export const selectCurrentUser = createSelector(
-    [selectUser],
-    (user: UserState) => user.currentUser
+  [selectUser],
+  (user: UserState) => user.currentUser
 );

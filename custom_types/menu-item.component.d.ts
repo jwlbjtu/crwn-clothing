@@ -2,7 +2,7 @@ declare module 'menu-item-component-types' {
 
     import { RouteComponentProps } from 'react-router-dom';
 
-    interface MenuItemProps {
+    type MenuItemProps = {
         title: string,
         imageUrl: string,
         size: string,

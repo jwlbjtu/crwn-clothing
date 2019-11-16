@@ -1,9 +1,9 @@
 declare module 'directory-component-types' {
-    export interface DirectoryState {
+    export type  DirectoryProps = {
         sections: Array<Section>
     }
     
-    export interface Section {
+    export type Section = {
         title: string,
         imageUrl: string,
         id: number,

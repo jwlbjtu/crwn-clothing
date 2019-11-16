@@ -16,14 +16,14 @@ import CheckoutPage from './pages/checkout/checkout.component';
 
 import { auth, createUserProfileDocument } from './firebase/firebase.util';
 import { selectCurrentUser } from './redux/user/user.selector';
- 
+
 class App extends React.Component<AppProps, {}> {
   unsubscribeFirebaseAuth: firebase.Unsubscribe | null = null;
 
-  componentDidMount() {
+  componentDidMount(): void {
     const { setCurrentUser } = this.props;
-    this.unsubscribeFirebaseAuth = auth.onAuthStateChanged( async user => {
-      if(user) {
+    this.unsubscribeFirebaseAuth = auth.onAuthStateChanged(async user => {
+      if (user) {
         const userRef = await createUserProfileDocument(user, {});
         userRef.onSnapshot(snapShot => {
           setCurrentUser({
@@ -37,41 +37,45 @@ class App extends React.Component<AppProps, {}> {
     });
   }
 
-  componentWillUnmount() {
-    if(this.unsubscribeFirebaseAuth) {
+  componentWillUnmount(): void {
+    if (this.unsubscribeFirebaseAuth) {
       this.unsubscribeFirebaseAuth();
     }
   }
 
-  render() {
+  render(): JSX.Element {
     return (
       <div>
         <Header />
         <Switch>
-          <Route exact path='/' component={HomePage} />
-          <Route path='/shop' component={ShopPage} />
-          <Route exact path='/signin' 
-                  render={
-                    () => this.props.currentUser?
-                          (<Redirect to='/' />):
-                          (<SigninRegisterPage />)              
-                  } 
+          <Route exact path="/" component={HomePage} />
+          <Route path="/shop" component={ShopPage} />
+          <Route
+            exact
+            path="/signin"
+            render={(): JSX.Element =>
+              this.props.currentUser ? (
+                <Redirect to="/" />
+              ) : (
+                <SigninRegisterPage />
+              )
+            }
           />
-          <Route exact path='/checkout' component={CheckoutPage} />
+          <Route exact path="/checkout" component={CheckoutPage} />
         </Switch>
       </div>
     );
   }
-
 }
 
-const mapStateToProps = (state: RootState) => ({
+const mapStateToProps = (state: RootState): { currentUser: any } => ({
   currentUser: selectCurrentUser(state)
 });
 
-const mapDispachToProps = (dispatch: any) => ({
+const mapDispachToProps = (
+  dispatch: any
+): { setCurrentUser: (user: any) => any } => ({
   setCurrentUser: (user: any) => dispatch(setCurrentUser(user))
 });
-
 
 export default connect(mapStateToProps, mapDispachToProps)(App);

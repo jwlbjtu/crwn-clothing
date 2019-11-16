@@ -1,5 +1,5 @@
 declare module 'sign-up-component-types' {
-    export interface SignUpState {
+    export type SignUpState = {
         displayName: string,
         email: string,
         password: string,
