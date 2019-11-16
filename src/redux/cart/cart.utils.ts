@@ -1,6 +1,6 @@
 import { CartItem, Item } from 'shop-component-types';
 
-const addCartItem = (cartItems: Array<CartItem>, itemToAdd: Item): Array<CartItem> => {
+export const addCartItem = (cartItems: Array<CartItem>, itemToAdd: Item): Array<CartItem> => {
     const existingItem = cartItems.find((item): boolean => 
         item.id === itemToAdd.id
     );
@@ -14,4 +14,18 @@ const addCartItem = (cartItems: Array<CartItem>, itemToAdd: Item): Array<CartIte
     return [...cartItems, { ...itemToAdd, quantity: 1 }]
 }
 
-export default addCartItem;
+export const removeCartItem = (cartItems: Array<CartItem>, itemToRemove: Item): Array<CartItem> => {
+    const existingItem = cartItems.find((item): boolean =>
+        item.id === itemToRemove.id
+    );
+
+    if(existingItem && existingItem.quantity === 1) {
+        return cartItems.filter(cartItem => cartItem.id !== itemToRemove.id);
+    }
+
+    return cartItems.map(cartItem => 
+        cartItem.id === itemToRemove.id ? 
+        { ...cartItem, quantity: cartItem.quantity - 1 } :
+        cartItem
+    );
+}

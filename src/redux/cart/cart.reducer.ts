@@ -3,7 +3,8 @@ import { AnyAction } from 'redux';
 import { CartState } from 'redux-root-types';
 
 import { CartActionTypes } from './cart.types';
-import addCartItem from './cart.utils';
+import { addCartItem, removeCartItem } from './cart.utils';
+import { isTerminatorless } from '@babel/types';
 
 const INITIAL_STATE = {
     hidden: true,
@@ -21,6 +22,16 @@ const cartReducer = (state: CartState = INITIAL_STATE, action: AnyAction) => {
             return {
                 ...state,
                 cartItems: addCartItem(state.cartItems, action.payload)
+            }
+        case CartActionTypes.REMOVE_ITEM:
+            return {
+                ...state,
+                cartItems: removeCartItem(state.cartItems, action.payload)
+            }
+        case CartActionTypes.CLEAR_ITEM:
+            return {
+                ...state,
+                cartItems: state.cartItems.filter(cartItem => cartItem.id !== action.payload.id)
             }
         default:
             return state;
