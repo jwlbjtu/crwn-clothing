@@ -1,9 +1,9 @@
 import React from 'react';
-import { CollectionsOverviewProps, Collection } from 'shop-component-types';
+import { CollectionsOverviewProps } from 'shop-component-types';
 import CollectionPreview from '../collection-preview/collection-preview.component';
 import { createStructuredSelector } from 'reselect';
-import { RootState, ShopState } from 'redux-root-types';
-import { selectCollections } from '../../redux/shop/shop.selector';
+import { RootState } from 'redux-root-types';
+import { selectCollectionPreview } from '../../redux/shop/shop.selector';
 import { connect } from 'react-redux';
 
 const CollectionsOverview: React.FC<CollectionsOverviewProps> = ({ collections }) => (
@@ -17,8 +17,8 @@ const CollectionsOverview: React.FC<CollectionsOverviewProps> = ({ collections }
     </div>
 );
 
-const mapStateToProps = createStructuredSelector<RootState, ShopState> ({
-    collections: selectCollections
+const mapStateToProps = createStructuredSelector<RootState, CollectionsOverviewProps> ({
+    collections: selectCollectionPreview
 });
 
 export default connect(mapStateToProps)(CollectionsOverview);

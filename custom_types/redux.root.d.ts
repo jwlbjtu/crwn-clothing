@@ -1,5 +1,5 @@
 declare module 'redux-root-types' {
-    import { Item, CartItem, Collection } from 'shop-component-types';
+    import { CartItem, Collections } from 'shop-component-types';
     import { Section } from 'directory-component-types';
     
     export type UserState = {
@@ -16,7 +16,7 @@ declare module 'redux-root-types' {
     }
 
     export type ShopState = {
-        collections: Collection[]
+        collections: Collections
     }
 
     export type RootState = {
