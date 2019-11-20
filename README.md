@@ -37,3 +37,7 @@ npm install && npm start
 ```
 
 Code on! ⌨ 
+
+## 📜  TODO
+* Add TravisCI to build the project
+* Try out Docker and K8s on this project
