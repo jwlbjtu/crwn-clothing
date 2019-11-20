@@ -7,7 +7,7 @@ An on going ecommerce project from the <a href='https://www.udemy.com/complete-r
 
 > **⚒ This is a fully functional ecommerce Web Application including authentication and payment. The goal of this project is to learn and practice technologies in the React ecosystem**
 
-Build using:
+🏗  Build using:
 
 - [TypeScript](https://www.typescriptlang.org/)
 - [React](https://reactjs.org/) - a popular user interface JavaScript library
@@ -15,7 +15,12 @@ Build using:
 - [React Router](https://reacttraining.com/react-router/) - helps to navigate through React components
 - [reselect](https://github.com/reduxjs/reselect#motivation-for-memoized-selectors) - a "selector" library for Redux, to avoid recalculations of states by using memoized selectors
 - [redux persist](https://github.com/rt2zz/redux-persist) - manage to persist redux store in storage
+- [react-stripe-checkout](https://www.npmjs.com/package/react-stripe-checkout) - a React component the wraps Stripe checkout JavaScript for a better React integration
+
+💈 Third Party Services
+
 - [firebase](https://firebase.google.com/) - thirdparty service provider for authentication and datastorage
+- [Stripe](https://stripe.com/) - online payment service platform
 
 ## Quick Start
 

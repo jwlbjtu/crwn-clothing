@@ -29,4 +29,7 @@ declare module 'cart-component-types' {
         removeItem: (cartItem: CartItem) => void,
         clearItem: (cartItem: CartItem) => void
     }
+    export type StripeCheckoutComponentProps = {
+        price: number
+    }
 }
