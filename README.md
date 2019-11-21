@@ -7,6 +7,8 @@ An on going ecommerce project from the <a href='https://www.udemy.com/complete-r
 
 > **⚒ This is a fully functional ecommerce Web Application including authentication and payment. The goal of this project is to learn and practice technologies in the React ecosystem**
 
+See it live: [https://jwl-clothing.herokuapp.com/](https://jwl-clothing.herokuapp.com/)
+
 🏗  Build using:
 
 - [TypeScript](https://www.typescriptlang.org/)
