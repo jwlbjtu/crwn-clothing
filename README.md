@@ -24,6 +24,9 @@ See it live: [https://jwl-clothing.herokuapp.com/](https://jwl-clothing.herokuap
 - [firebase](https://firebase.google.com/) - thirdparty service provider for authentication and datastorage
 - [Stripe](https://stripe.com/) - online payment service platform
 
+☁  Hosted on Heroku
+- [Steps to host the app](https://github.com/jwlbjtu/crwn-clothing/blob/master/Heroku.md)
+
 ## Quick Start
 
 Clone the repo using Git:
@@ -43,3 +46,4 @@ Code on! ⌨
 ## 📜  TODO
 * Add TravisCI to build the project
 * Try out Docker and K8s on this project
+* Automate the deploy steps
