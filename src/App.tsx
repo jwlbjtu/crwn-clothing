@@ -14,15 +14,14 @@ import ShopPage from './pages/shop/shop.component';
 import SigninRegisterPage from './pages/signin-register/signin-register.component';
 import CheckoutPage from './pages/checkout/checkout.component';
 
-import { auth, createUserProfileDocument, addCollectionsToFirebase } from './firebase/firebase.util';
+import { auth, createUserProfileDocument } from './firebase/firebase.util';
 import { selectCurrentUser } from './redux/user/user.selector';
-import { selectCollectionPreview } from './redux/shop/shop.selector';
 
 class App extends React.Component<AppProps, {}> {
   unsubscribeFirebaseAuth: firebase.Unsubscribe | null = null;
 
   componentDidMount(): void {
-    const { setCurrentUser, collections } = this.props;
+    const { setCurrentUser } = this.props;
     this.unsubscribeFirebaseAuth = auth.onAuthStateChanged(async user => {
       if (user) {
         const userRef = await createUserProfileDocument(user, {});
@@ -35,7 +34,6 @@ class App extends React.Component<AppProps, {}> {
       }
 
       setCurrentUser(user);
-      addCollectionsToFirebase('collections', collections.map(({ title, items }) => ({ title, items })));
     });
   }
 
@@ -70,9 +68,8 @@ class App extends React.Component<AppProps, {}> {
   }
 }
 
-const mapStateToProps = (state: RootState): { currentUser: any, collections: Array<any> } => ({
-  currentUser: selectCurrentUser(state),
-  collections: selectCollectionPreview(state)
+const mapStateToProps = (state: RootState): { currentUser: any } => ({
+  currentUser: selectCurrentUser(state)
 });
 
 const mapDispachToProps = (

@@ -11,7 +11,7 @@ declare module 'shop-component-types' {
     export type CartItem = { quantity: number } & Item;
 
     export type Collection = {
-        id: number,
+        id: string,
         title: string,
         routeName: string,
         items: Array<Item>
@@ -41,4 +41,8 @@ declare module 'shop-component-types' {
         item: Item,
         addItem: (item: Item) => void
     };
+
+    export type ShopPageProps = {
+        updateCollections: (collectionMap: Collections) => any
+    } & RouteComponentProps
 }

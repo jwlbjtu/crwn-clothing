@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+import { Collections, Collection } from 'shop-component-types';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyB8afWUCFj6qh6Rtb7W23xJBv9mR7LxjXw',
@@ -48,8 +49,26 @@ export const addCollectionsToFirebase = async (collectionKey: string, collection
     batch.set(newDocRef, obj);
   });
 
-  return await batch.commit()
-}
+  return await batch.commit();
+};
+
+export const converCollectionsSnapshotToMap = (collecitons: firebase.firestore.QuerySnapshot) => {
+  const transformedCollection = collecitons.docs.map<Collection>(doc => {
+    const { title, items } = doc.data();
+    
+    return {
+      routeName: encodeURI(title.toLowerCase()),
+      id: doc.id,
+      title,
+      items
+    }
+  });
+
+  return transformedCollection.reduce<Collections>((accumulator, collection) => {
+    accumulator[collection.title.toLowerCase()] = collection;
+    return accumulator;
+  }, {});
+};
 
 firebase.initializeApp(firebaseConfig);
 
