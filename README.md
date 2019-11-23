@@ -4,8 +4,9 @@
 An on going ecommerce project from the <a href='https://www.udemy.com/complete-react-developer-zero-to-mastery/'>Complete React Developer in 2020</a> course
 </p>
 
-
 > **⚒ This is a fully functional ecommerce Web Application including authentication and payment. The goal of this project is to learn and practice technologies in the React ecosystem**
+
+[![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)  
 
 See it live: [https://jwl-clothing.herokuapp.com/](https://jwl-clothing.herokuapp.com/)
 
@@ -18,6 +19,7 @@ See it live: [https://jwl-clothing.herokuapp.com/](https://jwl-clothing.herokuap
 - [reselect](https://github.com/reduxjs/reselect#motivation-for-memoized-selectors) - a "selector" library for Redux, to avoid recalculations of states by using memoized selectors
 - [redux persist](https://github.com/rt2zz/redux-persist) - manage to persist redux store in storage
 - [react-stripe-checkout](https://www.npmjs.com/package/react-stripe-checkout) - a React component the wraps Stripe checkout JavaScript for a better React integration
+- [styled-components](https://www.styled-components.com/) - CSS in JS concept, allow developers style their components by using JavaScript
 
 💈 Third Party Services
 
