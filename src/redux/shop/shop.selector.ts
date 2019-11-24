@@ -11,11 +11,17 @@ export const selectCollections = createSelector(
 
 export const selectCollectionPreview = createSelector(
     [selectCollections],
-    (collections: Collections) => Object.keys(collections)
-                                    .map((key: string) => collections[key])
+    (collections: Collections | null) => collections? 
+                                        Object.keys(collections).map((key: string) => collections[key]):
+                                        null
 );
 
 export const selectCollection = (collectionId: string) => createSelector(
     [selectCollections],
-    (collections: Collections) => collections[collectionId]
+    (collections: Collections | null) => collections ? collections[collectionId] : null
 );
+
+export const selectFetching = createSelector(
+    [selectShop],
+    (shop: ShopState) => shop.fetching
+)

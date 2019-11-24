@@ -16,7 +16,9 @@ declare module 'redux-root-types' {
     }
 
     export type ShopState = {
-        collections: Collections
+        collections: Collections | null,
+        fetching: boolean,
+        errorMessage: any
     }
 
     export type RootState = {

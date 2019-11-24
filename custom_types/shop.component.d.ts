@@ -1,5 +1,6 @@
 declare module 'shop-component-types' {
     import { RouteComponentProps } from "react-router";
+    import { ShopState } from "redux-root-types";
 
     export type Item = {
         id: number,
@@ -28,14 +29,14 @@ declare module 'shop-component-types' {
     };
 
     export type CollectionsOverviewProps = {
-        collections: Collection[]
+        collections: Collection[] | null
     };
 
     type Params = {
         [key: string]: any
     };
 
-    export type CollectionPageProps = { collection: Collection | undefined } & RouteComponentProps<Params>;
+    export type CollectionPageProps = { collection: Collection | null } & RouteComponentProps<Params>;
 
     export type CollectionItemProps = {
         item: Item,
@@ -43,6 +44,6 @@ declare module 'shop-component-types' {
     };
 
     export type ShopPageProps = {
-        updateCollections: (collectionMap: Collections) => any
-    } & RouteComponentProps
+        fetchCollectionStartAsync: () => void
+    } & ShopState & RouteComponentProps;
 }

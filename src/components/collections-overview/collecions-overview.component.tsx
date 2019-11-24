@@ -9,10 +9,11 @@ import { connect } from 'react-redux';
 const CollectionsOverview: React.FC<CollectionsOverviewProps> = ({ collections }) => (
     <div className='collections-overview'>
         {
+            collections?
             collections.map(
                 ({id, ...otherCollectionProps}) => 
                     <CollectionPreview key={id} {...otherCollectionProps} />
-            )
+            ) : null
         }
     </div>
 );
