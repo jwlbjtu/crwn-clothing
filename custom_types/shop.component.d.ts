@@ -44,6 +44,6 @@ declare module 'shop-component-types' {
     };
 
     export type ShopPageProps = {
-        fetchCollectionStartAsync: () => void
+        fetchCollectionsStart: () => void
     } & ShopState & RouteComponentProps;
 }

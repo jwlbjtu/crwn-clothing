@@ -3,7 +3,8 @@ declare module 'redux-root-types' {
     import { Section } from 'directory-component-types';
     
     export type UserState = {
-        currentUser: any
+        currentUser: any,
+        error: any
     }
 
     export type CartState = {

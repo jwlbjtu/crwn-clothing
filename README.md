@@ -21,6 +21,7 @@ See it live: [https://jwl-clothing.herokuapp.com/](https://jwl-clothing.herokuap
 - [react-stripe-checkout](https://www.npmjs.com/package/react-stripe-checkout) - a React component the wraps Stripe checkout JavaScript for a better React integration
 - [styled-components](https://www.styled-components.com/) - CSS in JS concept, allow developers style their components by using JavaScript
 - [redux-thunk](https://www.npmjs.com/package/redux-thunk) - Redux Thunk middleware allows you to write action creators that return a function instead of an action
+- [redux-saga](https://redux-saga.js.org/) - a library that aims to make application side effects(i.e. asynchronous things like data fetching and impure things like accessing the browser cache) easiter to manage
 
 💈 Third Party Services
 

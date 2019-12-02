@@ -3,4 +3,9 @@ declare module 'sign-in-component-types' {
         email: string,
         password: string
     }
+
+    export type SignInProps = {
+        googleSignInStart: ()=> {},
+        emailSignInStart: (cretential: SignInState) => {}
+    }
 }
