@@ -28,4 +28,9 @@ $ heroku buildpacks
 $ heroku buildpacks:remove <buildpack_name>
 ```
 
+#### Config
+```text
+$ heroku config:set <env_property_name>=<value>
+```
+
 Application URL [https://jwl-clothing.herokuapp.com/](https://jwl-clothing.herokuapp.com/)

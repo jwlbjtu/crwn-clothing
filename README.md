@@ -29,6 +29,10 @@ See it live: [https://jwl-clothing.herokuapp.com/](https://jwl-clothing.herokuap
 - [firebase](https://firebase.google.com/) - thirdparty service provider for authentication and datastorage
 - [Stripe](https://stripe.com/) - online payment service platform
 
+🖥 Backend
+- [NodeJS](https://nodejs.org/en/) - Server side JavaScript
+- [express](https://expressjs.com/) - Web framework for Node.js
+
 ☁  Hosted on Heroku
 - [Steps to host the app](https://github.com/jwlbjtu/crwn-clothing/blob/master/Heroku.md)
 

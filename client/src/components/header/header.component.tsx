@@ -24,9 +24,9 @@ const Header: React.FC<HeaderProps> = ({ currentUser, hidden, signOutStart }) =>
       <OptionLink to="/shop">
         SHOP
       </OptionLink>
-      <OptionLink to="/contact">
-        CONTACT
-      </OptionLink>
+      <a target="_blank" href="https://github.com/jwlbjtu/crwn-clothing">
+        CONTECT
+      </a>
       {currentUser ? (
         <OptionLink as='div' onClick={signOutStart}>
           SIGN OUT

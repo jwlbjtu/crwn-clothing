@@ -30,6 +30,7 @@ declare module 'cart-component-types' {
         clearItem: (cartItem: CartItem) => void
     }
     export type StripeCheckoutComponentProps = {
-        price: number
+        price: number,
+        clearCart: () => void
     }
 }
