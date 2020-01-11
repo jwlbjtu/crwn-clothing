@@ -16,4 +16,16 @@ $ heroku create <project_name> --buildpack https://github.com/mars/create-react-
 $ git push heroku master
 ```
 
+#### Check existing Heroku apps
+```text
+$ heroku apps
+```
+
+#### Check and remove existing buildpacks
+```text
+$ heroku buildpacks
+
+$ heroku buildpacks:remove <buildpack_name>
+```
+
 Application URL [https://jwl-clothing.herokuapp.com/](https://jwl-clothing.herokuapp.com/)
