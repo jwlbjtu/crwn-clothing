@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import './App.css';
+import { GlobalStyle } from './global.styles';
 
 import { AppProps } from 'app-types';
 import { RootState } from 'redux-root-types';
@@ -24,9 +24,9 @@ const App : React.FC<AppProps> = ({ checkUserSession, currentUser }) => {
 
   return (
     <div>
+      <GlobalStyle　/>
       <Header />
       <Switch>
-
         <Route exact path="/" component={HomePage} />
         <Route path="/shop" component={ShopPage} />
         <Route
