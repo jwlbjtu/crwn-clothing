@@ -23,6 +23,8 @@ See it live: [https://jwl-clothing.herokuapp.com/](https://jwl-clothing.herokuap
 - [redux-thunk](https://www.npmjs.com/package/redux-thunk) - Redux Thunk middleware allows you to write action creators that return a function instead of an action
 - [redux-saga](https://redux-saga.js.org/) - a library that aims to make application side effects(i.e. asynchronous things like data fetching and impure things like accessing the browser cache) easiter to manage
 - [React Hooks](https://reactjs.org/docs/hooks-intro.html) - Enable function component to use state and other React features
+- [React.lazy](https://reactjs.org/docs/code-splitting.html) - split React component into different chunks, then lazy load them
+- [React.memo](https://reactjs.org/docs/react-api.html#reactmemo) - If your function component renders the same result given the same props, you can wrap it in a call to React.memo for a performance boost in some cases by memoizing the result
 
 💈 Third Party Services
 

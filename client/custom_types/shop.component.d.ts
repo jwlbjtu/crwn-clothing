@@ -26,7 +26,7 @@ declare module 'shop-component-types' {
         title: string,
         routeName: string,
         items: Array<Item>
-    };
+    } & RouteComponentProps;
 
     export type CollectionsOverviewProps = {
         collections: Collection[] | null
