@@ -1,40 +1,41 @@
-import React, { useEffect, lazy, Suspense } from 'react';
-import { Route } from 'react-router';
+import React, { useEffect, lazy, Suspense } from "react";
+import { Route, Routes } from "react-router";
 
-import { fetchCollectionsStart } from '../../redux/shop/shop.actions';
-import { ShopPageProps } from 'shop-component-types';
-import { connect } from 'react-redux';
+import { fetchCollectionsStart } from "../../redux/shop/shop.actions";
+import { ShopPageProps } from "shop-component-types";
+import { connect } from "react-redux";
 
-import Spinner from '../../components/spinner/spinner.component';
+import Spinner from "../../components/spinner/spinner.component";
 
-const CollectionOverviewContainer = lazy(() => import('../../components/collections-overview/collections-overview.container'));
-const CollectionPageContainer = lazy(() => import('../collection/collection.container'));
+const CollectionOverviewContainer = lazy(
+  () =>
+    import(
+      "../../components/collections-overview/collections-overview.container"
+    )
+);
+const CollectionPageContainer = lazy(
+  () => import("../collection/collection.container")
+);
 
-const ShopPage : React.FC<ShopPageProps> = ({ fetchCollectionsStart, match }) => {
-  
+const ShopPage: React.FC<ShopPageProps> = ({ fetchCollectionsStart }) => {
   useEffect(() => {
     fetchCollectionsStart();
   }, [fetchCollectionsStart]);
 
   return (
-    <div className='shop-page'>
-      <Suspense fallback={Spinner} >
-        <Route 
-          exact 
-          path={`${match.path}`} 
-          component={CollectionOverviewContainer}
-        />
-        <Route 
-          path={`${match.path}/:collectionId`} 
-          component={CollectionPageContainer}
-        />
+    <div className="shop-page">
+      <Suspense fallback={<Spinner />}>
+        <Routes>
+          <Route path=":collectionId" element={<CollectionPageContainer />} />
+          <Route path="*" element={<CollectionOverviewContainer />} />
+        </Routes>
       </Suspense>
-    </div>  
-  )
-}
+    </div>
+  );
+};
 
 const mapDispatchToProps = (dispatch: any) => ({
-  fetchCollectionsStart: () => dispatch(fetchCollectionsStart())
+  fetchCollectionsStart: () => dispatch(fetchCollectionsStart()),
 });
 
 export default connect(null, mapDispatchToProps)(ShopPage);

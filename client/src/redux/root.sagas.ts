@@ -11,4 +11,4 @@ export default function* rootSaga() {
         call(userSaga),
         call(cartSaga)
     ]);
-};
+}

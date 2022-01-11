@@ -1,64 +1,52 @@
-import React, { useEffect, lazy, Suspense } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React, { useEffect, lazy, Suspense } from "react";
+import { Routes, Route } from "react-router-dom";
+import { connect } from "react-redux";
 
-import { GlobalStyle } from './global.styles';
+import { GlobalStyle } from "./global.styles";
 
-import { AppProps } from 'app-types';
-import { RootState } from 'redux-root-types';
+import { AppProps } from "app-types";
 
-import Header from './components/header/header.component';
-import Spinner from '../src/components/spinner/spinner.component';
-import ErrorBoundary from '../src/components/error-boundary/error-boundary.component';
+import Header from "./components/header/header.component";
+import Spinner from "./components/spinner/spinner.component";
+import ErrorBoundary from "./components/error-boundary/error-boundary.component";
 
-import { selectCurrentUser } from './redux/user/user.selector';
-import { checkUserSession } from './redux/user/user.actions';
+import { checkUserSession } from "./redux/user/user.actions";
+import PrivateRoute from "./components/private-route/private-route.component";
 
-const HomePage = lazy(() => import('./pages/homepage/homepage.component'));
-const ShopPage = lazy(() => import('./pages/shop/shop.component'));
-const SigninRegisterPage = lazy(() => import('./pages/signin-register/signin-register.component'));
-const CheckoutPage = lazy(() => import('./pages/checkout/checkout.component')); 
+const HomePage = lazy(() => import("./pages/homepage/homepage.component"));
+const ShopPage = lazy(() => import("./pages/shop/shop.component"));
+const SigninRegisterPage = lazy(
+  () => import("./pages/signin-register/signin-register.component")
+);
+const CheckoutPage = lazy(() => import("./pages/checkout/checkout.component"));
 
-const App : React.FC<AppProps> = ({ checkUserSession, currentUser }) => {
-
+const App: React.FC<AppProps> = ({ checkUserSession }) => {
   useEffect(() => {
     checkUserSession();
   }, [checkUserSession]);
 
   return (
     <div>
-      <GlobalStyle　/>
+      <GlobalStyle />
       <Header />
       <ErrorBoundary>
-        <Suspense fallback={Spinner}>
-          <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route path="/shop" component={ShopPage} />
-            <Route
-              exact
-              path="/signin"
-              render={(): JSX.Element =>
-                currentUser ? (
-                  <Redirect to="/" />
-                ) : (
-                  <SigninRegisterPage />
-                )
-              }
-            />
-            <Route exact path="/checkout" component={CheckoutPage} />
-          </Switch>
+        <Suspense fallback={<Spinner />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/shop/*" element={<ShopPage />} />
+            <Route path="/signin" element={<PrivateRoute />}>
+              <Route element={<SigninRegisterPage />} />
+            </Route>
+            <Route path="/checkout" element={<CheckoutPage />} />
+          </Routes>
         </Suspense>
       </ErrorBoundary>
     </div>
   );
-}
-
-const mapStateToProps = (state: RootState): { currentUser: any } => ({
-  currentUser: selectCurrentUser(state)
-});
+};
 
 const mapDispatchToProps = (dispatch: any) => ({
-  checkUserSession: () => dispatch(checkUserSession())
-})
+  checkUserSession: () => dispatch(checkUserSession()),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);

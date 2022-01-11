@@ -17,4 +17,4 @@ export function* cartSaga() {
     yield all([
         call(onSignOutStart)
     ])
-};
+}

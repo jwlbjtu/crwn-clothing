@@ -1,6 +1,6 @@
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/auth';
+import { initializeApp } from 'firebase/app';
+import { getFirestore, getDoc, doc, collection, setDoc, writeBatch, QuerySnapshot, DocumentSnapshot } from 'firebase/firestore';
+import { getAuth, onAuthStateChanged, GoogleAuthProvider, User } from 'firebase/auth';
 import { Collections, Collection } from 'shop-component-types';
 
 const firebaseConfig = {
@@ -15,18 +15,19 @@ const firebaseConfig = {
 };
 
 export const createUserProfileDocument = async (
-  userAuth: firebase.User,
+  userAuth: User,
   additionalData: { [key: string]: string }
 ) => {
-  const userRef = firestore.doc(`users/${userAuth.uid}`);
-  const snapShot = await userRef.get();
+  const userRef = doc(firestore, 'users', userAuth.uid);
+  const snapShot = await getDoc(userRef);
 
   if (!snapShot.exists) {
     const { displayName, email } = userAuth;
     const createAt = new Date();
 
     try {
-      await userRef.set({
+      const usersRef = collection(firestore, 'users');
+      await setDoc(doc(usersRef, userAuth.uid), {
         displayName,
         email,
         createAt,
@@ -41,19 +42,17 @@ export const createUserProfileDocument = async (
 };
 
 export const addCollectionsToFirebase = async (collectionKey: string, collectionObj: Array<any>) => {
-  const collectionRef = firestore.collection(collectionKey);
-
-  const batch = firestore.batch();
+  const batch = writeBatch(firestore);
   collectionObj.forEach(obj => {
-    const newDocRef = collectionRef.doc();
+    const newDocRef = doc(firestore, collectionKey);
     batch.set(newDocRef, obj);
   });
 
   return await batch.commit();
 };
 
-export const converCollectionsSnapshotToMap = (collecitons: firebase.firestore.QuerySnapshot) => {
-  const transformedCollection = collecitons.docs.map<Collection>(doc => {
+export const converCollectionsSnapshotToMap = (collecitons: QuerySnapshot) => {
+  const transformedCollection = collecitons.docs.map<Collection>((doc: any) => {
     const { title, items } = doc.data();
     
     return {
@@ -72,20 +71,18 @@ export const converCollectionsSnapshotToMap = (collecitons: firebase.firestore.Q
 
 export const getCurrentUser = () => {
   return new Promise((resolve, reject) => {
-    const unsubscribe = auth.onAuthStateChanged(userAuth => {
+    const unsubscribe = onAuthStateChanged(auth, user => {
       unsubscribe();
-      resolve(userAuth);
+      resolve(user);
     }, reject);
   })
 }
 
-firebase.initializeApp(firebaseConfig);
+const firebaseApp = initializeApp(firebaseConfig);
 
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
+export const auth = getAuth(firebaseApp);
+export const firestore = getFirestore(firebaseApp);
 
 // Firebae Google Authentication Provider
-export const googleProvider = new firebase.auth.GoogleAuthProvider();
+export const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({ prompt: 'select_account' });
-
-export default firebase;

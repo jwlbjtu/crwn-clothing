@@ -2,6 +2,7 @@ import { UserActionTypes } from './user.types';
 import { ActionType } from 'redux-root-types';
 import { SignInState } from 'sign-in-component-types';
 import { SignUpState } from 'sign-up-component-types';
+import { User } from 'firebase/auth';
 
 export const setCurrentUser = (user: any): ActionType => ({
   type: UserActionTypes.SET_CURRENT_USER,
@@ -49,7 +50,7 @@ export const signUpStart = (signUpInfo: SignUpState) => ({
   payload: signUpInfo
 });
 
-export const signUpSuccess = (signUpSeccessObj : { user: firebase.User, additionalData: { [key: string]: any }}) => ({
+export const signUpSuccess = (signUpSeccessObj : { user: User, additionalData: { [key: string]: any }}) => ({
   type: UserActionTypes.SIGN_UP_SUCCESS,
   payload: signUpSeccessObj
 });
